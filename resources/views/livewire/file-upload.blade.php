@@ -1,36 +1,59 @@
 <div>
+	<div class="flex-row">
+		<div class="spinner-border spinner-border-sm m-3 end-0" role="status" wire:loading wire:target="upload"></div>
+	</div>
+	@if (session()->has('message'))
+		<div class="alert alert-success alert-block m-3">
+			<button type="button" class="close" data-dismiss="alert">×</button>
+			<strong>{{ session('message') }}</strong>
+		</div>
+	@endif
 	<div class="flex h-screen justify-center items-center">
-		<button type="button" name="" id="" class="btn btn-primary btn-lg btn-block m-5">Upload your Image/Video
-		</button>
-		<div class="py-6 w-96 rounded border-dashed border-2 flex flex-col justify-center items-center">
-			<div class="mt-1" wire:loading.flex wire.target="files">
-				<svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-gray-700" xmlns="http://www.w3.org/2000/svg" fill="none"
-				     viewBox="0 0 24 24">
-					<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-					<path class="opacity-75" fill="currentColor"
-					      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-				</svg>
-				<div>Processing Files</div>
+		<div class="row w-75">
+			<div class="col-md-12">
+				<form class="mb-5" wire:submit.prevent="upload">
+					<div class="form-group row mt-5 mb-3">
+						<div class="input-group">
+							<input type="file" class="form-control @error('media') is-invalid @enderror"
+							       placeholder="Choose file..." id="media-file" type="file" wire:model="media">
+							@error('media')
+							<div class="invalid-feedback">{{ $message }}</div>
+							@enderror
+						</div>
+						<small class="text-muted text-center mt-2" wire:loading wire:target="media">
+							{{ __('Uploading') }}&hellip;
+						</small>
+					</div>
+					<div class="text-center">
+						<button type="submit" class="btn btn-sm btn-primary w-25">
+							<i class="fas fa-check mr-1"></i> {{ __('Crop') }}
+						</button>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>
-	
-	<script>
-		function drop_file_component() {
-			return {
-				dropingFile: false,
-				handleFileDrop(e) {
-					if (event.dataTransfer.files.length > 0) {
-						const files = e.dataTransfer.files;
-					@this.uploadMultiple('files', files,
-						(uploadedFilename) => {
-						}, () => {
-						}, (event) => {
-						}
-					)
-					}
-				}
-			};
-		}
-	</script>
+	<div class="container">
+		<div class="row">
+			@foreach($croppedImages as $key => $link)
+			<div class="col-sm mb-4">
+				<div class="card">
+					<div class="card-body">
+						<img class="card-img-top" src="{{ $link }}" alt="Card image cap">
+						<h5 class="card-title mt-4 fw-bold">
+							{{ $key }}
+						</h5>
+						@if($key == '1:1')
+							<p>Image Aspect Ratio 1:1</p>
+							<p><strong>Platforms: </strong>Facebook, Instagram</p>
+						@elseif($key == '2:1' || $key == '16:10')
+							<p>Image Aspect Ratio 2:1, 16:10</p>
+							<p><strong>Platforms: </strong>Twitter, LinkedIn</p>
+						@endif
+					</div>
+				</div>
+			</div>
+			@endforeach
+		</div>
+	</div>
 </div>

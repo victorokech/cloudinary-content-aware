@@ -13,10 +13,7 @@
 	@section('styles')
 		<link href="{{ mix('css/app.css') }}" rel="stylesheet">
 		@livewireStyles
-@show
-
-<!-- Scripts -->
-	<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+	@show
 </head>
 <body class="antialiased">
 <div
@@ -39,46 +36,6 @@
 		
 		<div class="m-2 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
 			@livewire('file-upload')
-			<div class="container">
-				<div class="row">
-					<div class="col-sm mb-4">
-						<div class="card">
-							<div class="card-body">
-								<img class="card-img-top" src="https://via.placeholder.com/400x600" alt="Card image cap">
-								<h5 class="card-title mt-4">
-									Facebook: Aspect Ratio 1:1 (1080x1080)
-								</h5>
-								
-								This is some text within a card body.
-							</div>
-						</div>
-					</div>
-					<div class="col-sm mb-4">
-						<div class="card">
-							<div class="card-body">
-								<img class="card-img-top" src="https://via.placeholder.com/400x600" alt="Card image cap">
-								<h5 class="card-title mt-4">
-									Instagram: Aspect Ratio 1:1 (1080x1080)
-								</h5>
-								This is some text within a card body.
-							</div>
-						</div>
-					</div>
-					<div class="col-sm mb-4">
-						<div class="card">
-							<div class="card-body">
-								<img class="card-img-top" src="https://via.placeholder.com/400x600" alt="Card image cap">
-								<h5 class="card-title mt-4">
-									Twitter: Image (1024x512)
-									Twitter: Video (1920x1200)
-								</h5>
-								
-								This is some text within a card body.
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
 		</div>
 		
 		<div class="flex justify-center mt-4 mb-4 sm:items-center sm:justify-between">
@@ -88,5 +45,14 @@
 			</div>
 		</div>
 	</div>
+	@section('scripts')
+		<script src="{{ mix('js/app.js') }}"></script>
+		<script>
+			if (window.self !== window.top) {
+				window.top.location.href = '{{ url('/') }}';
+			}
+		</script>
+		@livewireScripts
+	@show
 </body>
 </html>
