@@ -42,7 +42,7 @@
 						'folder'         => 'content-aware',
 						'transformation' => [
 							'aspect_ratio' => $ac,
-							'gravity'      => 'faces',
+							'gravity'      => 'auto',
 							'crop'         => 'fill'
 						]
 					])->getSecurePath();

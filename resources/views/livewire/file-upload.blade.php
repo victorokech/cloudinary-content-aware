@@ -3,9 +3,10 @@
 		<div class="spinner-border spinner-border-sm m-3 end-0" role="status" wire:loading wire:target="upload"></div>
 	</div>
 	@if (session()->has('message'))
-		<div class="alert alert-success alert-block m-3">
-			<button type="button" class="close" data-dismiss="alert">×</button>
-			<strong>{{ session('message') }}</strong>
+		<div class="alert alert-success alert-dismissible fade show m-3" role="alert">
+			<h4 class="alert-heading">Holy guacamole success!</h4>
+			<p>{{ session('message') }}</p>
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 		</div>
 	@endif
 	<div class="flex h-screen justify-center items-center">
