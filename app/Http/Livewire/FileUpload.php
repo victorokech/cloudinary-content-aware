@@ -15,9 +15,9 @@
 		
 		public function mount() {
 			$this->croppedImages = [
-				"1:1" => "https://res.cloudinary.com/dgrpkngjn/image/upload/v1655798963/content-aware/xcstzkbkotraibhzix8n.jpg",
-				"2:1" => "https://res.cloudinary.com/dgrpkngjn/image/upload/v1655798966/content-aware/qmgg54ojv4vkqyvn5d4k.jpg",
-				"16:10" => "https://res.cloudinary.com/dgrpkngjn/image/upload/v1655798970/content-aware/uk1pfcfoyxetziggnac0.jpg"
+				"1:1" => "https://res.cloudinary.com/dgrpkngjn/image/upload/v1655820836/content-aware/hd4yrwgvyi8mubj3t0mm.jpg",
+				"2:1" => "https://res.cloudinary.com/dgrpkngjn/image/upload/v1655820843/content-aware/cjct7dhp0jywmkgdz9t7.jpg",
+				"16:10" => "https://res.cloudinary.com/dgrpkngjn/image/upload/v1655820849/content-aware/wv1lyruyduudwhkkrft7.jpg"
 			];
 		}
 		
@@ -42,7 +42,7 @@
 						'folder'         => 'content-aware',
 						'transformation' => [
 							'aspect_ratio' => $ac,
-							'gravity'      => 'auto',
+							'gravity'      => 'auto', //can be face, face etc
 							'crop'         => 'fill'
 						]
 					])->getSecurePath();

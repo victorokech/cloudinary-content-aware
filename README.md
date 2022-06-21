@@ -19,11 +19,9 @@ administration, transformation and optimized delivery.
 In this article, we will implement Cloudinary’s Content-Aware Crop API to automatically crop and scale our media files
 to perfectly fit any layout and device.
 
-## Github
+## PHPSandbox and Github
 
-The final project can be viewed on [Github](https://github.com).
-
-You can find the full source code in my Github repository.
+The final project can be viewed on [PHPSandbox](https://phpsandbox.io/e/x/nuopv?&layout=EditorPreview&iframeId=61ihmshq1o&theme=dark&defaultPath=/&showExplorer=no&openedFiles=/app/Http/Livewire/FileUpload.php) and the entire source code is available on my [Github](https://github.com/victorokech/cloudinary-content-aware) repository.
 
 ## Prerequisites
 
@@ -51,6 +49,8 @@ start ensure you have Composer installed on your machine.
 
 The Laravel Project is now up and running.
 
+![img.png](assets/laravel-running.png)
+
 ## Setting up Cloudinary’s Laravel SDK
 
 Using Cloudinary allows you to optimize the performance of your Laravel backend by allowing you to upload, process, and
@@ -60,8 +60,9 @@ bursts of traffic with a global content delivery network (CDN) feature. This is 
 To implement a content-aware crop for our media files with Cloudinary:
 
 1. Sign up for a free Cloudinary account then navigate to the Console page and take note of your Cloud name, API Key and
-   API Secret.
-   ![Cloudinary Dashboard](assets/img_4.png)
+   API Secret.<br><br>
+
+   ![Cloudinary Dashboard](assets/cloudinary_dashboard.png)<br><br>
 
 2. Install [Cloudinary’s Laravel SDK](https://github.com/cloudinary-labs/cloudinary-laravel#installation):<br>
    `composer require cloudinary-labs/cloudinary-laravel`
@@ -157,7 +158,7 @@ or
 This basically adds, Livewire styles and scripts, a bunch of HTML code for the project and the Livewire component we
 created earlier. **Please** ensure you replace all the code in the file `resources/view/welcome.blade.php`.
 
-3. Open the file `resources/views/livewire/file-upliad.blade.php` and populate it with the following code:
+3. Open the file `resources/views/livewire/file-upload.blade.php` and populate it with the following code:
 
 ```html
 
@@ -272,7 +273,7 @@ specify.
 
 If you succesfully implemented the code above, you should be able to see the following when you navigate to your project on the browser:
 
-![Cloudinary Content Aware Crop Media Platform](assets/img.png)
+![Cloudinary Content Aware Crop Media Platform](assets/cloudinary_content_aware.png)
 
    **Note:** Cloudinary is super powerful for the management of your media assets in your project that will not only optimize your assets for visual quality but also cost savings in terms of performance, storage, AI powered transformations as well.
 
