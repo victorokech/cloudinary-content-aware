@@ -1,8 +1,10 @@
 {
-	"name": "laravel/laravel",
+	"name": "cloudinary/content-aware-demo",
 	"type": "project",
-	"description": "The Laravel Framework.",
+	"description": "In this article, we will implement Cloudinary’s Content-Aware Crop API to automatically crop and scale our media files to perfectly fit any layout and device.",
 	"keywords": [
+		"cloudinary",
+		"content-aware-crop",
 		"framework",
 		"laravel"
 	],
@@ -17,7 +19,6 @@
 		"laravel/tinker": "^2.5",
 		"laravel/ui": "^3.4",
 		"livewire/livewire": "^2.10",
-		"ext-gd": "*"
 	},
 	"require-dev": {
 		"facade/ignition": "^2.5",
