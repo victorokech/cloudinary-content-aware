@@ -243,8 +243,8 @@ specify.
    public function upload() {
     $data = $this->validate([
       'media' => ['required',
-					'image',
-					'mimes:jpeg,jpg,png',],]);
+                    'image',
+                    'mimes:jpeg,jpg,png',],]);
     if (empty($data['media'])) {
       unset($data['media']);
     } else {
@@ -269,6 +269,11 @@ specify.
    }  
    ```
    The code above, slated for image files with focus items for instance faces, will automagically focus on the people's faces or any focus items and perform content aware cropping and resizing of the image based on our parameters. Better still, Cloudinary will also automatically optimize the image size with no compromise in quality. This is done by setting the `auto` value for the `quality` and `fetch_format` attributes.
+
+If you succesfully implemented the code above, you should be able to see the following when you navigate to your project on the browser:
+
+![Cloudinary Content Aware Crop Media Platform](assets/img.png)
+
    **Note:** Cloudinary is super powerful for the management of your media assets in your project that will not only optimize your assets for visual quality but also cost savings in terms of performance, storage, AI powered transformations as well.
 
 # Do More with Cloudinary
