@@ -10,7 +10,6 @@
 	class FileUpload extends Component {
 		use WithFileUploads;
 		
-		public $media;
 		public $croppedImages = [];
 		
 		public function mount() {
@@ -35,7 +34,6 @@
 				unset($data['media']);
 			} else {
 				$media = $data['media'];
-				//$name = Str::random(15).'.'.$media->guessExtension();
 				$aspect_ratio = ['1:1', '2:1', '16:10'];
 				foreach ($aspect_ratio as $ac) {
 					$image = cloudinary()->upload($media->getRealPath(), [
