@@ -7,11 +7,11 @@
 </a></p>
 
 <h1 align="center">
- Content Aware Media Crop Platform
+ Content-Aware Media Crop Platform
 </h1>
 
 Cloudinary is a Software-as-a-Service (SaaS) solution for managing all your web or mobile application’s media assets in
-the cloud. Cloudinary offers an end-to-end solution for all your image and video needs, including the upload, storage,
+the cloud. Cloudinary offers an end-to-end solution for all your image and video needs, including upload, storage,
 administration, transformation and optimized delivery.
 
 ## Introduction
@@ -19,9 +19,9 @@ administration, transformation and optimized delivery.
 In this article, we will implement Cloudinary’s Content-Aware Crop API to automatically crop and scale our media files
 to perfectly fit any layout and device.
 
-## PHPSandbox and Github
+## Github
 
-The final project can be viewed on [PHPSandbox](https://phpsandbox.io/e/x/nuopv?&layout=EditorPreview&iframeId=61ihmshq1o&theme=dark&defaultPath=/&showExplorer=no&openedFiles=/app/Http/Livewire/FileUpload.php) and the entire source code is available on my [Github](https://github.com/victorokech/cloudinary-content-aware) repository.
+The entire source code is available on my [Github](https://github.com/victorokech/cloudinary-content-aware) repository.
 
 ## Prerequisites
 
@@ -37,19 +37,20 @@ start ensure you have Composer installed on your machine.
 1. Install [Composer](https://getcomposer.org/) and [PHP](https://www.php.net/manual/en/install.windows.tools.php) on
    your development or production machine.
 2. Install Laravel
-    1. Via Composer:
    
-       `composer create-project --prefer-dist laravel/laravel cloudinary-content-aware`
-    2. Via Laravel Installer
+   a) Via Composer:
    
-       `composer global require laravel/installer`
+   `composer create-project --prefer-dist laravel/laravel cloudinary-content-aware`
+   b) Via Laravel Installer
    
-       `laravel new cloudinary-content-aware`
-3. In step 2 above we have created a project folder called `cloudinary-content-aware`. Change the directory to this
+   `composer global require laravel/installer`
+   
+   `laravel new cloudinary-content-aware`
+3. In step 2b above we have created a project folder called `cloudinary-content-aware`. Change the directory to this
    project folder and run the local development server by typing the following commands:
-
+   
    `cd cloudinary-content-aware`
-
+   
    `php artisan serve`
 
 The Laravel Project is now up and running.
@@ -66,13 +67,10 @@ To implement a content-aware crop for our media files with Cloudinary:
 
 1. Sign up for a free Cloudinary account then navigate to the Console page and take note of your Cloud name, API Key and
    API Secret.
-
-
+   
    ![Cloudinary Dashboard](https://res.cloudinary.com/dgrpkngjn/image/upload/v1655885646/content-aware/assets/cloudinary_dashboard_pditxk.png)
-
-
-3. Install [Cloudinary’s Laravel SDK](https://github.com/cloudinary-labs/cloudinary-laravel#installation):
-
+2. Install [Cloudinary’s Laravel SDK](https://github.com/cloudinary-labs/cloudinary-laravel#installation):
+   
    `composer require cloudinary-labs/cloudinary-laravel`
 
 **Note**: Please ensure you follow all the steps in the #Installation section. Publish the configuration file and add
@@ -83,24 +81,24 @@ the Cloudinary credentials you noted in Step 1 to the .env file.
 We will be using the Laravel package Livewire to build the UI and the image file upload functionality.
 
 1. Install Livewire Package by running the following command in your Laravel project:
-
+   
    `composer require livewire/livewire`
-
-
 2. Include Livewire scripts and styles on every page that will be using Livewire. In our case `welcome.blade.php`:
+
 ```html
 ...
     @livewireStyles
 </head>
 <body>
     ...
-    
+  
     @livewireScripts
 </body>
 </html>
 ```
-3. We will then create a Livewire Component to handle our file uploads:
 
+3. We will then create a Livewire Component to handle our file uploads:
+   
    `php artisan make:livewire FileUpload`
 
 This will create two files, one in `app/Http/Livewire/FileUpload` and the other one
@@ -141,7 +139,7 @@ This basically includes the Livewire component we created earlier into our `welc
             @enderror
         </div>
         <small class="text-muted text-center mt-2" wire:loading wire:target="media">
-            {{ __('Uploading') }}&hellip;
+            {{ __('Uploading') }}…
         </small>
     </div>
     <div class="text-center">
@@ -188,16 +186,20 @@ The second part will take the response from Cloudinary and display the optimized
 
 4. Open the file `app/Http/Livewire/FileUpload.php`. Here, we are going to add a method that will upload an image to
    Cloudinary applying the necessary transformations that we need. Add the following code in this file.
-    1. First we use Livewires `WithFileUploads` to help us with file uploads, then create two variables `$media`
-       and `$croppedImages` which is an array that will contain the image URLs we get back from Cloudinary.
+   
+   1. First we use Livewires `WithFileUploads` to help us with file uploads, then create two variables `$media`
+      and `$croppedImages` which is an array that will contain the image URLs we get back from Cloudinary.
+   
    ```php
-    use Livewire\WithFileUploads;
-    
+   use Livewire\WithFileUploads;
+   
     public $media;
     public $croppedImages = [];
-    ```
-    2. Secondly, we will create the function that will upload the image file to [Cloudinary](https://cloudinary.com) and
-       apply specified transformations which include the aspect rations that we need.
+   ```
+   
+   2. Secondly, we will create the function that will upload the image file to [Cloudinary](https://cloudinary.com) and
+      apply specified transformations which include the aspect rations that we need.
+   
    ```php
    public function upload() {
     $data = $this->validate([
@@ -219,23 +221,30 @@ The second part will take the response from Cloudinary and display the optimized
             'gravity'      => 'faces',
             'crop'         => 'fill'
           ]])->getSecurePath();
-    
+   
         $this->croppedImages[$ac] = $image;
       }
     }
    
     session()->flash('message', 'Image file cropped successfully!');
-   }  
+   }
    ```
+   
    The code above, slated for image files with focus items for instance faces, will automagically focus on the people's faces or any focus items and perform content aware cropping and resizing of the image based on our parameters. Better still, Cloudinary will also automatically optimize the image size with no compromise in quality. This is done by setting the `auto` value for the `quality` and `fetch_format` attributes.
 
 If you successfully implemented the code above, you should be able to see the following when you navigate to your project on the browser:
 
-![Cloudinary Content Aware Crop Media Platform](https://res.cloudinary.com/dgrpkngjn/image/upload/v1655885646/content-aware/assets/cloudinary_content_aware_xasqfu.png)
+![Cloudinary Content-Aware Crop Media Platform](https://res.cloudinary.com/dgrpkngjn/image/upload/v1655885646/content-aware/assets/cloudinary_content_aware_xasqfu.png)
 
-   **Note:** Cloudinary is super powerful for the management of your media assets in your project that will not only optimize your assets for visual quality but also cost savings in terms of performance, storage, AI powered transformations as well.
+**Note:** Cloudinary is super powerful for the management of your media assets in your project that will not only optimize your assets for visual quality but also cost savings in terms of performance, storage, and AI-powered transformations as well.
+
+## PHPSandbox
+
+A demo of the project can be viewed in the code sandbox embedded below or directly on [PHPSandbox](https://phpsandbox.io/e/x/nuopv?&layout=EditorPreview&iframeId=61ihmshq1o&theme=dark&defaultPath=/&showExplorer=no&openedFiles=/app/Http/Livewire/FileUpload.php).
 
 # Do More with Cloudinary
+
 Cloudinary is your A to Z media management solution - upload, storage, administration, manipulation, optimization and delivery.
 
 [Get started](https://cloudinary.com/signup) with Cloudinary in your Laravel projects for FREE!
+
