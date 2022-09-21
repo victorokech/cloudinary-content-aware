@@ -10,9 +10,7 @@
  Content-Aware Media Crop Platform
 </h1>
 
-Cloudinary is a Software-as-a-Service (SaaS) solution for managing all your web or mobile application’s media assets in
-the cloud. Cloudinary offers an end-to-end solution for all your image and video needs, including upload, storage,
-administration, transformation and optimized delivery.
+Cloudinary is a Software-as-a-Service (SaaS) solution for managing all your web or mobile application’s media assets in the cloud. Cloudinary offers an end-to-end solution for all your image and video needs, including upload, storage, administration, transformation and optimized delivery.
 
 ## Introduction
 
@@ -240,9 +238,9 @@ If you successfully implemented the code above, you should be able to see the fo
 
 ## PHPSandbox
 
-A demo of the project can be viewed in the code sandbox embedded below or directly on [PHPSandbox](https://phpsandbox.io/e/x/hlj0o?&layout=Preview&iframeId=y8xjquujb9&theme=dark&defaultPath=/&showExplorer=no).
+A demo of the project can be viewed in the code sandbox embedded below or directly on [PHPSandbox](https://phpsandbox.io/e/x/p8tqa?&layout=Preview&iframeId=3tgfqzpulf&theme=dark&defaultPath=/&showExplorer=no).
 
-<figure style="height: 500px;"><iframe src="https://phpsandbox.io/e/x/hlj0o?&layout=Preview&iframeId=lfx9wqrjrg&theme=dark&defaultPath=/&showExplorer=no" style="display: block" loading="lazy" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" height="100%" width="100%"></iframe></figure>
+<figure style="height: 500px;"><iframe src="https://phpsandbox.io/e/x/p8tqa?&layout=Preview&iframeId=3tgfqzpulf&theme=dark&defaultPath=/&showExplorer=no" style="display: block" loading="lazy" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" height="100%" width="100%"></iframe></figure>
 
 # Do More with Cloudinary
 
